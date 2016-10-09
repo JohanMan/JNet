@@ -21,4 +21,9 @@ public class Call<T> {
         OkHttpExecutor.INSTANCE.executeRequest(request, callback, respondType);
     }
 
+    public void call(String tag, Callback<T> callback) {
+        request.setTag(tag);
+        OkHttpExecutor.INSTANCE.executeRequest(request, callback, respondType);
+    }
+
 }

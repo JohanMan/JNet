@@ -1,6 +1,7 @@
 package com.johan.jnet;
 
 import com.johan.jnet.http.Call;
+import com.johan.jnet.http.OkHttpExecutor;
 import com.johan.jnet.http.Request;
 import com.johan.jnet.parser.ParseResult;
 import com.johan.jnet.parser.Parser;
@@ -44,6 +45,10 @@ public class JNet {
                         return method.invoke(this, args);
                     }
                 });
+    }
+
+    public static void cancel(String tag) {
+        OkHttpExecutor.INSTANCE.cancelRequest(tag);
     }
 
 }

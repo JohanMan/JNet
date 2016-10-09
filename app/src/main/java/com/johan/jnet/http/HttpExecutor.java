@@ -10,4 +10,6 @@ public interface HttpExecutor {
 
     void executeRequest(Request request, Callback callback, Type respondType);
 
+    void cancelRequest(String tag);
+
 }

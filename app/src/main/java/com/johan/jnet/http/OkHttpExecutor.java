@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -91,6 +92,22 @@ public enum  OkHttpExecutor implements HttpExecutor {
                 handler.workResponse(callback, realResponse);
             }
         });
+    }
+
+    @Override
+    public void cancelRequest(String tag) {
+        okHttpClient.cancel(tag);
+        // remove request with tag from handlerMap
+        Iterator<Map.Entry<com.squareup.okhttp.Request, WorkerHandler>> iterator = handlerMap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            com.squareup.okhttp.Request request = iterator.next().getKey();
+            if (request.tag() instanceof String) {
+                String requestTag = (String) request.tag();
+                if (requestTag.equals(tag)) {
+                    iterator.remove();
+                }
+            }
+        }
     }
 
     private static class BuildOkHttpRequestFactory {

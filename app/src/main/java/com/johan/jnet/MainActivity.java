@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TestService testService = JNet.create(TestService.class);
         Call<String> call = testService.hiBaidu();
-        call.call(new Callback<String>() {
+        call.call(getClass().getName(), new Callback<String>() {
             @Override
             public void onResponse(final Response<String> respond) {
                 System.out.print("body ----> " + respond.getBody());
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 System.out.print("reason ----> " + reason);
             }
         });
+        JNet.cancel(getClass().getName());
     }
 
 }
