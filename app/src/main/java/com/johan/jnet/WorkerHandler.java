@@ -7,7 +7,8 @@ import com.johan.jnet.http.Response;
 import java.lang.ref.WeakReference;
 
 /**
- * Created by Administrator on 2016/10/9.
+ * Handler，主要是让callback运行在ui线程
+ * Created by Johan on 2016/10/9.
  */
 public class WorkerHandler extends Handler {
 

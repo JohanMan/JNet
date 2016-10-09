@@ -15,16 +15,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TestService testService = JNet.create(TestService.class);
-        Call<String> call = testService.share();
+        Call<String> call = testService.hiBaidu();
         call.call(new Callback<String>() {
             @Override
             public void onResponse(final Response<String> respond) {
-                System.out.print("---->" + respond.getBody());
+                System.out.print("body ----> " + respond.getBody());
                 Toast.makeText(MainActivity.this, "length ----> " + respond.getBody().length(), Toast.LENGTH_LONG).show();
             }
             @Override
             public void onFailure(String reason) {
-
+                System.out.print("reason ----> " + reason);
             }
         });
     }

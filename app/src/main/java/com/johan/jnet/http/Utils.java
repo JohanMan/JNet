@@ -4,7 +4,8 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 /**
- * Created by Administrator on 2016/10/9.
+ * 工具类
+ * Created by Johan on 2016/10/9.
  */
 public class Utils {
 

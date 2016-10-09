@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2016/10/9.
+ * Http请求的结果类
+ * Created by Johan on 2016/10/9.
  */
 public class Response <T> {
 
