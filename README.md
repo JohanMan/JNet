@@ -21,7 +21,7 @@
             setContentView(R.layout.activity_main);
             TestService testService = JNet.create(TestService.class);
             Call<String> call = testService.hiBaidu();
-            call.call(getClass().getName(), new Callback<String>() {
+            call.call(getClass().getName(), new Callback<String>() {
                 @Override
                 public void onResponse(final Response<String> respond) {
                     System.out.print("body ----> " + respond.getBody());
@@ -32,10 +32,9 @@
                     System.out.print("reason ----> " + reason);
                 }
             });
-            // 取消Http请求
+            // 取消Http请求
             JNet.cancel(getClass().getName());
         }
-
     }
 
 就这么简单就可以访问网络了！
