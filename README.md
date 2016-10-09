@@ -1,5 +1,5 @@
 # jnet
-这是一个类似于Retrofit的网络访问框架，个人非常喜欢面向接口编程，Rereofit做到了这点，这就是我要学习Retrofit框架的原因，从而定制出属于自己的“Retrofit”。希望大家能从中学到一些关于AOP和反射机制的知识。
+这是一个类似于Retrofit的网络访问框架，个人非常喜欢面向接口编程，Rereofit做到了这点，这就是我要学习Retrofit框架的原因。根据Retrofit原理，现在定制出属于自己的“Retrofit”--JNet。希望大家能从中学到一些关于AOP和反射机制的知识。
 
 ## usage
 （1）写一个Service接口类：
@@ -21,7 +21,7 @@
             setContentView(R.layout.activity_main);
             TestService testService = JNet.create(TestService.class);
             Call<String> call = testService.hiBaidu();
-            call.call(new Callback<String>() {
+            call.call(getClass().getName(), new Callback<String>() {
                 @Override
                 public void onResponse(final Response<String> respond) {
                     System.out.print("body ----> " + respond.getBody());
@@ -32,6 +32,8 @@
                     System.out.print("reason ----> " + reason);
                 }
             });
+            // 取消Http请求
+            JNet.cancel(getClass().getName());
         }
 
     }
